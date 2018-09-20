@@ -6,5 +6,8 @@ public class main {
 		System.out.println("Version : " + VERSION);
 		System.out.println("Correction HotFix 01");
 		System.out.println("Correction HotFix 02");
+		System.out.println("TESTING Feature 1");
+		System.out.println("TESTING Feature 2");
+		System.out.println("TESTING Feature 3");
 	}
 }
