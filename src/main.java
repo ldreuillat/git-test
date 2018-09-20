@@ -1,5 +1,5 @@
 public class main {
-	private static final String VERSION="1.1";
+	private static final String VERSION="1.2";
 	
 	public static void main(String[] args) {
 		System.out.println("Application test GIT");
