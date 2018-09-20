@@ -5,5 +5,6 @@ public class main {
 		System.out.println("Application test GIT");
 		System.out.println("Version : " + VERSION);
 		System.out.println("Correction HotFix 01");
+		System.out.println("Correction HotFix 02");
 	}
 }
