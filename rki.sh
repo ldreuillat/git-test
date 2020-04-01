@@ -1,0 +1,1 @@
+curl -X POST 'http://localhost:8080/nuxeo/site/automation/DGA_CLADE.RunKohaImport' -H 'remote_user: Administrator' -H 'Content-Type: application/json' -d '{"params":{"type":"NoticeBib","batchSize":"100"},"context":{}}'
