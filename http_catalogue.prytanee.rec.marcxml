@@ -96,4 +96,106 @@ France</subfield>
   </datafield>
 </record>
 
+<record>
+  <leader>01067nam0 22002651i 4500</leader>
+  <controlfield tag="001">32754</controlfield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">PRYTANEE-7846</subfield>
+  </datafield>
+  <datafield tag="090" ind1=" " ind2=" ">
+    <subfield code="a">32754</subfield>
+  </datafield>
+  <datafield tag="099" ind1=" " ind2=" ">
+    <subfield code="t">OUVRAGE</subfield>
+    <subfield code="c">2019-10-21</subfield>
+  </datafield>
+  <datafield tag="100" ind1=" " ind2=" ">
+    <subfield code="a">20130403d1986         frey50        </subfield>
+  </datafield>
+  <datafield tag="200" ind1="1" ind2=" ">
+    <subfield code="a">Stratégie chinoise ou la Mue du dragon</subfield>
+    <subfield code="e">Un regard franco-japonais sur les mutations en cours. Claude Cadart, Mineo Nakajima</subfield>
+  </datafield>
+  <datafield tag="101" ind1="0" ind2=" ">
+    <subfield code="a">fre</subfield>
+  </datafield>
+  <datafield tag="215" ind1=" " ind2=" ">
+    <subfield code="a">1 vol. 233 p.</subfield>
+    <subfield code="c">couv. ill. en coul. ; cartes et tableaux</subfield>
+    <subfield code="d">25 cm</subfield>
+  </datafield>
+  <datafield tag="300" ind1=" " ind2=" ">
+    <subfield code="a">Autre(s) titre(s) : Stratégie chinoise Mue du dragon</subfield>
+  </datafield>
+  <datafield tag="319" ind1=" " ind2=" ">
+    <subfield code="a">Aucun droit spécifique</subfield>
+  </datafield>
+  <datafield tag="610" ind1=" " ind2=" ">
+    <subfield code="a">Chine Relations extérieures 1976-....
+Chine Politique économique 1976-....</subfield>
+  </datafield>
+  <datafield tag="669" ind1=" " ind2="1">
+    <subfield code="a">Histoire générale de l Asie Orient Extrême Orient</subfield>
+  </datafield>
+  <datafield tag="700" ind1=" " ind2="1">
+    <subfield code="9">23378</subfield>
+    <subfield code="4">070</subfield>
+    <subfield code="a">Nakajima</subfield>
+    <subfield code="b">Mineo</subfield>
+    <subfield code="f">1936-....</subfield>
+  </datafield>
+  <datafield tag="701" ind1=" " ind2="1">
+    <subfield code="9">23379</subfield>
+    <subfield code="4">070</subfield>
+    <subfield code="a">Cadart</subfield>
+    <subfield code="b">Claude</subfield>
+  </datafield>
+  <datafield tag="102" ind1=" " ind2=" ">
+    <subfield code="a">FR</subfield>
+  </datafield>
+  <datafield tag="210" ind1=" " ind2=" ">
+    <subfield code="a">Paris</subfield>
+    <subfield code="b">77, rue du Faubourg-Saint-Antoine
+
+75011
+Paris
+France</subfield>
+    <subfield code="c">Autrement</subfield>
+    <subfield code="d">1986</subfield>
+    <subfield code="z">France</subfield>
+  </datafield>
+  <datafield tag="225" ind1="2" ind2=" ">
+    <subfield code="a">Enjeux et stratégies</subfield>
+  </datafield>
+  <datafield tag="410" ind1=" " ind2="0">
+    <subfield code="t">Enjeux et stratégies</subfield>
+    <subfield code="0">976</subfield>
+  </datafield>
+  <datafield tag="676" ind1=" " ind2=" ">
+    <subfield code="a">951.05</subfield>
+  </datafield>
+  <datafield tag="801" ind1=" " ind2=" ">
+    <subfield code="a">FR</subfield>
+    <subfield code="b">Bibliothèque du Prytanée</subfield>
+  </datafield>
+  <datafield tag="995" ind1=" " ind2=" ">
+    <subfield code="1">0</subfield>
+    <subfield code="2">0</subfield>
+    <subfield code="3">0</subfield>
+    <subfield code="5">2013-04-04</subfield>
+    <subfield code="9">35635</subfield>
+    <subfield code="b">PRYTANEE</subfield>
+    <subfield code="c">PRYTANEE</subfield>
+    <subfield code="e">CDIHENRIIV</subfield>
+    <subfield code="f">10951</subfield>
+    <subfield code="h">DOC</subfield>
+    <subfield code="i">2019-10-21</subfield>
+    <subfield code="k">951.05 STR</subfield>
+    <subfield code="o">0</subfield>
+    <subfield code="r">EMPRUNT</subfield>
+    <subfield code="s">951_050000000000000_STR</subfield>
+    <subfield code="y">2019-10-21</subfield>
+  </datafield>
+</record>
+
 </collection>
