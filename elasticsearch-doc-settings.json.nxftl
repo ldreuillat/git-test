@@ -41,17 +41,12 @@
           "qu",
           "n",
           "s",
-          "j",
-          "d",
-          "jusqu",
-          "quoiqu",
-          "lorsqu",
-          "puisqu"
+          "j"
         ],
         "type": "elision"
       },
-      "fr_stem_filter": {
-        "language": "light_french",
+	  "fr_stem_filter": {
+        "name": "minimal_french",
         "type": "stemmer"
       },
       "fr_stop_filter": {
@@ -59,7 +54,11 @@
           "_french_"
         ],
         "type": "stop"
-      }
+      },
+	  "french_lowercase": {
+		"type": "lowercase",
+		"language": "minimal_french"
+	  }
     },
     "tokenizer": {
       "path_tokenizer": {
@@ -74,15 +73,28 @@
     },
     "analyzer": {
       "fulltext": {
+        "filter": [
+          "word_delimiter_filter",
+          "lowercase",
+          "en_stop_filter",
+          "en_stem_filter",
+          "asciifolding_filter",
+	      "fr_elision_filter"
+        ],
+        "type": "custom",
+        "tokenizer": "standard"
+      },
+	  "fulltext_fr": {
         "char_filter": [
           "html_strip"
         ],
         "filter": [
-          "truncate_filter",
-          "fr_elision_filter",
+          "word_delimiter_filter",
           "lowercase",
           "fr_stop_filter",
-          "fr_stem_filter"
+          "fr_stem_filter",
+          "asciifolding_filter",
+          "fr_elision_filter"
         ],
         "type": "custom",
         "tokenizer": "standard"
@@ -92,15 +104,15 @@
         "tokenizer": "path_tokenizer"
       },
       "lowercase_analyzer": {
+		"char_filter": [
+          "fr_accent_strip"
+        ],
         "type": "custom",
-        "tokenizer": "standard",
         "filter": [
-          "truncate_filter",
-          "fr_elision_filter",
           "lowercase",
-          "fr_stop_filter",
-          "fr_stem_filter"
-        ]
+          "asciifolding"
+        ],
+        "tokenizer": "keyword"
       },
       "ngram_analyzer": {
         "type": "custom",
@@ -111,11 +123,25 @@
       },
       "default": {
         "type": "custom",
+        "tokenizer": "keyword",
         "filter": [
           "truncate_filter"
-        ],
-        "tokenizer": "keyword"
+        ]
       }
-    }
+    },
+	"char_filter": {
+        "fr_accent_strip": {
+          "type": "mapping",
+          "mappings": [
+            "é => e",
+            "è => e",
+            "ê => e",
+            "à => a",
+            "â => a",
+            "ù => u",
+            "û => u"
+          ]
+        }
+      }
   }
 }

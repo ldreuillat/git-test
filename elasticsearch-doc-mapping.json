@@ -1,0 +1,1652 @@
+{
+  "_all": {
+    "enabled": false
+  },
+  "dynamic_templates": [
+    {
+      "no_thumbnail_template": {
+        "mapping": {
+          "index": false
+        },
+        "path_match": "thumb:thumbnail.*"
+      }
+    },
+    {
+      "no_picture_template": {
+        "mapping": {
+          "index": false
+        },
+        "path_match": "picture:views.*"
+      }
+    },
+    {
+      "strings": {
+        "mapping": {
+          "type": "keyword",
+          "copy_to": "all_field",
+          "ignore_above": 256
+        },
+        "match_mapping_type": "string"
+      }
+    }
+  ],
+  "properties": {
+    "all_field": {
+      "type": "text",
+      "analyzer": "fulltext"
+    },
+    "ecm:name": {
+      "type": "keyword",
+      "ignore_above": 256,
+      "copy_to": "all_field"
+    },
+    "ecm:acl": {
+      "type": "keyword"
+    },
+    "ecm:binarytext": {
+      "type": "text",
+      "analyzer": "fulltext",
+      "copy_to": "all_field"
+    },
+    "ecm:path": {
+      "fields": {
+        "children": {
+          "type": "text",
+          "search_analyzer": "keyword",
+          "analyzer": "path_analyzer"
+        }
+      },
+      "type": "keyword"
+    },
+    "ecm:pos": {
+      "type": "integer"
+    },
+    "ecm:isCheckedIn": {
+      "type": "boolean"
+    },
+    "ecm:isLatestMajorVersion": {
+      "type": "boolean"
+    },
+    "ecm:isLatestVersion": {
+      "type": "boolean"
+    },
+    "ecm:isProxy": {
+      "type": "boolean"
+    },
+    "ecm:isVersion": {
+      "type": "boolean"
+    },
+    "common:icon": {
+      "index": false,
+      "type": "keyword"
+    },
+    "dc:title": {
+      "type": "text",
+      "copy_to": "all_field",
+      "fielddata": true,
+      "fields": {
+        "fulltext": {
+          "analyzer": "fulltext",
+          "type": "text",
+          "boost": 2
+        },
+        "lower_case_sort": {
+          "type":     "text",
+          "analyzer": "lowercase_analyzer"
+        }
+      }
+    },
+    "dc:description": {
+      "type": "keyword",
+      "copy_to": "all_field",
+      "ignore_above": 32765,
+      "fields": {
+        "fulltext": {
+          "analyzer": "fulltext",
+          "type": "text",
+          "boost": 1.5
+        }
+      }
+    },
+    "dc:created": {
+      "type": "date"
+    },
+    "dc:expired": {
+      "type": "date"
+    },
+    "dc:modified": {
+      "type": "date"
+    },
+    "dc:creator": {
+      "type": "keyword",
+      "ignore_above": 256
+    },
+    "dc:lastContributor": {
+      "type": "keyword",
+      "ignore_above": 256
+    },
+    "ecm:uuid": {
+      "type": "keyword",
+      "ignore_above": 256
+    },
+    "ecm:mixinType": {
+      "type": "keyword",
+      "ignore_above": 256
+    },
+    "ecm:currentLifeCycleState": {
+      "type": "keyword",
+      "ignore_above": 256
+    },
+    "ecm:versionVersionableId": {
+      "type": "keyword",
+      "ignore_above": 256
+    },
+    "ecm:primaryType": {
+      "type": "keyword",
+      "ignore_above": 256
+    },
+    "note:note": {
+      "type": "keyword",
+      "copy_to": "all_field",
+      "ignore_above": 256,
+      "fields": {
+        "fulltext": {
+          "analyzer": "fulltext",
+          "type": "text"
+        }
+      }
+    },
+    "clc:titre" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "fulltext": {
+          "analyzer": "fulltext",
+          "type": "text",
+          "boost": 2
+        },
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clc:titres" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clc:parutions" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clc:visibilite" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clc:type" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clc:auteurdoc" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clc:auteursdoc" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clc:auteurprincipal" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "fulltext": {
+          "analyzer": "fulltext",
+          "type": "text",
+          "boost": 2
+        },
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clc:auteurdepot" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clc:auteursdepot" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clc:contributeurs" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clc:etat" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clc:source" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clc:localisation" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clc:complement" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clc:motscles" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clc:thematique" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "fulltext": {
+          "analyzer": "fulltext",
+          "type": "text",
+          "boost": 2
+        },
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clc:entlieux" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "fulltext": {
+          "analyzer": "fulltext",
+          "type": "text",
+          "boost": 2
+        },
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clc:entorga" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "fulltext": {
+          "analyzer": "fulltext",
+          "type": "text",
+          "boost": 2
+        },
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clc:entperson" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "fulltext": {
+          "analyzer": "fulltext",
+          "type": "text",
+          "boost": 2
+        },
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clp:cote" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clp:modeacquis" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clp:categpret" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clp:communication" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clp:numsource" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clg:metagen1" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clg:metagen2" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clg:metagen3" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clg:metagen4" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clg:metagen5" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clg:metagen6" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clg:metagen7" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clg:metagen8" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clg:metagen9" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clg:metagen10" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clg:metagen11" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clg:metagen12" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clg:metagen13" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clg:metagen14" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clg:metagen15" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clg:metagen16" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clg:metagen17" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clg:metagen18" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clg:metagen19" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clg:metagen20" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clg:metagen21" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clg:metagen22" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clg:metagen23" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clg:metagen24" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clg:metagen25" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clg:metagen26" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clg:metagen27" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clg:metagen28" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clg:metagen29" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clg:metagen30" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clg:metagen31" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clg:metagen32" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clg:metagen33" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clg:metagen34" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clg:metagen35" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clg:metagen36" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clg:metagen37" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clg:metagen38" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clg:metagen39" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clg:metagen40" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clg:metagen41" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clg:metagen42" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clg:metagen43" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clg:metagen44" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clg:metagen45" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clg:metagen46" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clg:metagen47" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clg:metagen48" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clg:metagen49" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clg:metagen50" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "dos:titre" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "dos:auteur" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "clb:portail" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "dos:complement" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "dos:motscles" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "mxml:data.value" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "mxml:isbn" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "mxml:issn" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "mxml:ean" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "mxml:nompersonne" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "mxml:nompersonnefamille" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "mxml:nomcollectivites" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "mxml:typeres" : {"type": "text","copy_to": "all_field"},
+    "mxml:menedt" : {"type": "text","copy_to": "all_field"},
+    "mxml:amenedt" : {"type": "text","copy_to": "all_field"},
+    "mxml:pmenedt" : {"type": "text","copy_to": "all_field"},
+    "mxml:rmenedt" : {"type": "text","copy_to": "all_field"},
+    "mxml:rsmenedt" : {"type": "text","copy_to": "all_field"},
+    "mxml:presmus" : {"type": "text","copy_to": "all_field"},
+    "mxml:ppresmus" : {"type": "text","copy_to": "all_field"},
+    "mxml:infoedt" : {"type": "text","copy_to": "all_field"},
+    "mxml:titrecoll" : {"type": "text","copy_to": "all_field"},
+    "mxml:ptitrecoll" : {"type": "text","copy_to": "all_field"},
+    "mxml:ctitrecoll" : {"type": "text","copy_to": "all_field"},
+    "mxml:titrepartcoll" : {"type": "text","copy_to": "all_field"},
+    "mxml:notes" : {"type": "text","copy_to": "all_field"},
+    "mxml:notebib" : {"type": "text","copy_to": "all_field"},
+    "mxml:notetitre" : {"type": "text","copy_to": "all_field"},
+    "mxml:noteedt" : {"type": "text","copy_to": "all_field"},
+    "mxml:notepub" : {"type": "text","copy_to": "all_field"},
+    "mxml:notemat" : {"type": "text","copy_to": "all_field"},
+    "mxml:notecoll" : {"type": "text","copy_to": "all_field"},
+    "mxml:notedisp" : {"type": "text","copy_to": "all_field"},
+    "mxml:notelien" : {"type": "text","copy_to": "all_field"},
+    "mxml:notetitreass" : {"type": "text","copy_to": "all_field"},
+    "mxml:noteresp" : {"type": "text","copy_to": "all_field"},
+    "mxml:noteress" : {"type": "text","copy_to": "all_field"},
+    "mxml:noteexpl" : {"type": "text","copy_to": "all_field"},
+    "mxml:noteprov" : {"type": "text","copy_to": "all_field"},
+    "mxml:noteidx" : {"type": "text","copy_to": "all_field"},
+    "mxml:noteext" : {"type": "text","copy_to": "all_field"},
+    "mxml:notegen" : {"type": "text","copy_to": "all_field"},
+    "mxml:noteint" : {"type": "text","copy_to": "all_field"},
+    "mxml:noteorig" : {"type": "text","copy_to": "all_field"},
+    "mxml:noterepro" : {"type": "text","copy_to": "all_field"},
+    "mxml:notecont" : {"type": "text","copy_to": "all_field"},
+    "mxml:notethese" : {"type": "text","copy_to": "all_field"},
+    "mxml:typethese" : {"type": "text","copy_to": "all_field"},
+    "mxml:discthese" : {"type": "text","copy_to": "all_field"},
+    "mxml:datethese" : {"type": "text","copy_to": "all_field"},
+    "mxml:orgathese" : {"type": "text","copy_to": "all_field"},
+    "mxml:atitrethese" : {"type": "text","copy_to": "all_field"},
+    "mxml:nnotethese" : {"type": "text","copy_to": "all_field"},
+    "mxml:noteresum" : {"type": "text","copy_to": "all_field"},
+    "mxml:liencollissn" : {"type": "text","copy_to": "all_field"},
+    "mxml:lienscollissn" : {"type": "text","copy_to": "all_field"},
+    "mxml:lienextissn" : {"type": "text","copy_to": "all_field"},
+    "mxml:lienaextissn" : {"type": "text","copy_to": "all_field"},
+    "mxml:lienasupissn" : {"type": "text","copy_to": "all_field"},
+    "mxml:liensupissn" : {"type": "text","copy_to": "all_field"},
+    "mxml:lienpubissn" : {"type": "text","copy_to": "all_field"},
+    "mxml:lienisupdissn" : {"type": "text","copy_to": "all_field"},
+    "mxml:lienupdissn" : {"type": "text","copy_to": "all_field"},
+    "mxml:liensuitissn" : {"type": "text","copy_to": "all_field"},
+    "mxml:lienpsuitissn" : {"type": "text","copy_to": "all_field"},
+    "mxml:lienrempissn" : {"type": "text","copy_to": "all_field"},
+    "mxml:lienprempissn" : {"type": "text","copy_to": "all_field"},
+    "mxml:lienabsissn" : {"type": "text","copy_to": "all_field"},
+    "mxml:lienpabsissn" : {"type": "text","copy_to": "all_field"},
+    "mxml:lienfussissn" : {"type": "text","copy_to": "all_field"},
+    "mxml:liensepissn" : {"type": "text","copy_to": "all_field"},
+    "mxml:liendevissn" : {"type": "text","copy_to": "all_field"},
+    "mxml:lienpdevissn" : {"type": "text","copy_to": "all_field"},
+    "mxml:lienreplissn" : {"type": "text","copy_to": "all_field"},
+    "mxml:lienpreplissn" : {"type": "text","copy_to": "all_field"},
+    "mxml:lienabsdissn" : {"type": "text","copy_to": "all_field"},
+    "mxml:lienpabsdissn" : {"type": "text","copy_to": "all_field"},
+    "mxml:lienscindissn" : {"type": "text","copy_to": "all_field"},
+    "mxml:lienfusdissn" : {"type": "text","copy_to": "all_field"},
+    "mxml:lienredevissn" : {"type": "text","copy_to": "all_field"},
+    "mxml:lienedsupissn" : {"type": "text","copy_to": "all_field"},
+    "mxml:lieneddsupissn" : {"type": "text","copy_to": "all_field"},
+    "mxml:lientradissn" : {"type": "text","copy_to": "all_field"},
+    "mxml:lienistradissn" : {"type": "text","copy_to": "all_field"},
+    "mxml:lienisreproissn" : {"type": "text","copy_to": "all_field"},
+    "mxml:lienreproissn" : {"type": "text","copy_to": "all_field"},
+    "mxml:lienensissn" : {"type": "text","copy_to": "all_field"},
+    "mxml:liensensissn" : {"type": "text","copy_to": "all_field"},
+    "mxml:liendansissn" : {"type": "text","copy_to": "all_field"},
+    "mxml:liencontissn" : {"type": "text","copy_to": "all_field"},
+    "mxml:lienresanalissn" : {"type": "text","copy_to": "all_field"},
+    "mxml:lienrelvolissn" : {"type": "text","copy_to": "all_field"},
+    "mxml:lienrelsuiissn" : {"type": "text","copy_to": "all_field"},
+    "mxml:lienrelautissn" : {"type": "text","copy_to": "all_field"},
+    "mxml:titreconvsecpart" : {"type": "text","copy_to": "all_field"},
+    "mxml:tclangue" : {"type": "text","copy_to": "all_field"},
+    "mxml:tpnumpart" : {"type": "text","copy_to": "all_field"},
+    "mxml:titreppart" : {"type": "text","copy_to": "all_field"},
+    "mxml:tpautreinfo" : {"type": "text","copy_to": "all_field"},
+    "mxml:tplangue" : {"type": "text","copy_to": "all_field"},
+    "mxml:tcouvnumpart" : {"type": "text","copy_to": "all_field"},
+    "mxml:titrecouvpart" : {"type": "text","copy_to": "all_field"},
+    "mxml:tcouvautreinfo" : {"type": "text","copy_to": "all_field"},
+    "mxml:tcouvlangue" : {"type": "text","copy_to": "all_field"},
+    "mxml:tanumpart" : {"type": "text","copy_to": "all_field"},
+    "mxml:titreapart" : {"type": "text","copy_to": "all_field"},
+    "mxml:taautreinfo" : {"type": "text","copy_to": "all_field"},
+    "mxml:talangue" : {"type": "text","copy_to": "all_field"},
+    "mxml:tdepnumpart" : {"type": "text","copy_to": "all_field"},
+    "mxml:titredeppart" : {"type": "text","copy_to": "all_field"},
+    "mxml:tdepautreinfo" : {"type": "text","copy_to": "all_field"},
+    "mxml:tdeplangue" : {"type": "text","copy_to": "all_field"},
+    "mxml:tdosnumpart" : {"type": "text","copy_to": "all_field"},
+    "mxml:titredospart" : {"type": "text","copy_to": "all_field"},
+    "mxml:tdosautreinfo" : {"type": "text","copy_to": "all_field"},
+    "mxml:tdoslangue" : {"type": "text","copy_to": "all_field"},
+    "mxml:tavarnumpart" : {"type": "text","copy_to": "all_field"},
+    "mxml:titreavarpart" : {"type": "text","copy_to": "all_field"},
+    "mxml:tavarautreinfo" : {"type": "text","copy_to": "all_field"},
+    "mxml:tavarlangue" : {"type": "text","copy_to": "all_field"},
+    "mxml:tgrapnumpart" : {"type": "text","copy_to": "all_field"},
+    "mxml:titregrappart" : {"type": "text","copy_to": "all_field"},
+    "mxml:tgrapautreinfo" : {"type": "text","copy_to": "all_field"},
+    "mxml:tgraplangue" : {"type": "text","copy_to": "all_field"},
+    "mxml:thistnumpart" : {"type": "text","copy_to": "all_field"},
+    "mxml:titrehistpart" : {"type": "text","copy_to": "all_field"},
+    "mxml:thistautreinfo" : {"type": "text","copy_to": "all_field"},
+    "mxml:thistlangue" : {"type": "text","copy_to": "all_field"},
+    "dc:subjects" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "fulltext": {
+          "analyzer": "fulltext",
+          "type": "text",
+          "boost": 2
+        },
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        }
+      }
+    },
+    "cln:espace" : {
+      "type" : "text",
+      "copy_to" : "all_field",
+      "fielddata":"true",
+      "fields" : {
+        "lowercase" : {
+          "type": "text",
+          "analyzer" : "lowercase_analyzer"
+        },
+        "ngram": {
+          "type": "text",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    },
+    "cln:nxchemin" : {
+      "type" : "keyword",
+      "fields" : {
+        "children" : {
+          "type" : "text",
+          "search_analyzer" : "keyword",
+          "analyzer" : "path_analyzer"
+        }
+      }
+    }
+  }
+}
