@@ -1,0 +1,1 @@
+curl -X POST 'http://localhost:8080/nuxeo/site/automation/DGA_CLADE.SearchDocument' -H 'remote_user: Administrator' -H 'Content-Type: application/json' -d '{"params":{"query":"SELECT * FROM NoticeAut WHERE clb:portail ='332275' AND clp:bibnumber='10'","queryType":"NXQL","metadatas":{"mxml:data":""}},"context":{}}'
